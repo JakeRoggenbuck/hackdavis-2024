@@ -15,6 +15,8 @@ def preprocess(action_frame):
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (8, 8))
     hsv_d = cv2.dilate(blur, kernel)
 
+    # hsv_d = cv2.morphologyEx(blur, cv2.MORPH_CLOSE, kernel)
+
     return hsv_d
 
 # Initialize video capture
@@ -29,23 +31,28 @@ while True:
     if not ret:
         break
 
-    '''
-    # Convert the frame to HSV color space
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    # clean = preprocess(frame)
 
-    # Threshold the HSV image to get only the desired color
-    mask = cv2.inRange(hsv, lower_color, upper_color)
+    # Grayscale for image
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    # Find contours in the mask
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    '''
+    # contours, _ = cv2.findContours(preprocess(frame), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    contours, _ = cv2.findContours(preprocess(frame), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_eye.xml")
+    faces = face_cascade.detectMultiScale(frame, 1.1, 5, minSize=(40, 40))
 
     # Draw bounding boxes around the detected contours
-    for contour in contours:
-        x, y, w, h = cv2.boundingRect(contour)
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    for (x,y,w,h) in faces:
+        # x, y, w, h = cv2.boundingRect(face)
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 4)
+
+        roi_gray = gray[y:y+h, x:x+w]
+        roi_color = frame[y:y+h, x:x+w]
+        
+        eyes = eye_cascade.detectMultiScale(roi_gray)
+        for (ex,ey,ew,eh) in eyes:
+            cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
     # Display the resulting frame
     cv2.imshow('Object Tracking', frame)
