@@ -7,7 +7,8 @@ Mission: Reduce car related injuries and deaths
 Our project for [https://hackdavis.io/event](https://hackdavis.io/event) 2024.
 
 - [x] Use Intel Developer Cloud to train AI 🚀
-- [x] Performance gains (reduce train time by 4 minutes) with bfloat16 and ipex ⚡
+- [x] Performance gains (reduce PyTorch train time by 4 minutes) with bfloat16 and ipex ⚡
+- [x] Tensorflow performance gains (train time going from 2:23s to 1:14s) Almost twice as fast with ipex!
 - [x] Use ipex with PyTorch in IDC
 - [x] Make three different OpenCV models for lane detection, human obstacle detection, and driver alertness detection  
 
