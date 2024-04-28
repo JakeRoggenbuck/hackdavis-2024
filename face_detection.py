@@ -56,12 +56,12 @@ from random import randint
 cap = cv2.VideoCapture(0)
 
 # Set our dimensions for the ROI
-roi_x = 500
-roi_y = 500
-roi_w = 800
+roi_x = 650
+roi_y = 200
+roi_w = 600
 roi_h = 600
 
-threshold = 300
+threshold = 200
 
 # # Define the color range to track in HSV
 # lower_color = np.array([108, 23, 82], dtype = "uint8")  # Lower HSV range for the object color
