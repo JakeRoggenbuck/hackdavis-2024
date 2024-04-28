@@ -100,6 +100,8 @@ Use an Arduino and an ultrasonic distance sensor to alert the driver if they are
 
 ## OpenCV Lane Detection
 
+![Safe Drive AI](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/68b01c54-52b2-4234-98f1-31a8e8732aa8)
+
 ### Original Image
 ![lane-image](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/3457eaf7-1a5d-4db4-ac5f-d8cf5790430c)
 
