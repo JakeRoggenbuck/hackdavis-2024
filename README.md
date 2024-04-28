@@ -40,6 +40,14 @@ datetime.timedelta(seconds=955, microseconds=100137)
 
 As you can see, intel ipex and bfloat16 saved us 4 entire minutes for this model. Imagine a much larger model and the type of time and compute cost savings that could be achived.
 
+## Intel LeaderBoard
+
+We submitted a custom bfloat16 model to the intel leaderboard. [Here](https://huggingface.co/spaces/roggenbuck/gemma-bfloat16) is the model fine tuned from Gemma
+
+![image](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/2f8b1d4f-b13f-4bc0-98a3-aae2095e7456)
+
+![2024-04-28_09-50](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/a5d263d5-cd12-490c-ac5f-725db129ec5c)
+
 ### Proximity Alert
 Use an Arduino and an ultrasonic distance sensor to alert the driver if they are too close to anything, including another car 
 
