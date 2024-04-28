@@ -13,7 +13,36 @@ Use a forward facing camera and OpenCV to recognize lanes and alert the driver i
 Use a driver facing camera and OpenCV to detect if the driver is awake and paying attention to the road
 
 ### Blind Spot Detection
-Use PyTorch and Intel Developer Cloud Notebook to detect pedestrians walking infront and next to the car and alert the driver if they get too close. We were able to use **Intel's ipex, PyTorch plugin, and bfloat16 to reduce the training time by 4 entire minutes.** We used ipex from Intel AI and the Intel PyTorch plugin to leverage Intel AMX. 
+Use PyTorch and Intel Developer Cloud Notebook to detect pedestrians walking infront and next to the car and alert the driver if they get too close. We were able to use **Intel's ipex, PyTorch plugin, and bfloat16 to reduce the training time by 4 entire minutes.** We used ipex from Intel AI and the Intel PyTorch plugin to leverage Intel AMX.
+
+#### ipex example usage
+```py
+import torch
+import intel_extension_for_pytorch as ipex
+from engine import train_one_epoch, evaluate
+import datetime
+
+# ...
+
+params = [p for p in model.parameters() if p.requires_grad]
+optimizer = torch.optim.SGD(
+    params,
+    lr=0.005,
+    momentum=0.9,
+    weight_decay=0.0005
+)
+
+lr_scheduler = torch.optim.lr_scheduler.StepLR(
+    optimizer,
+    step_size=3,
+    gamma=0.1
+)
+
+model = get_model_instance_segmentation(num_classes)
+
+model, optimizer = ipex.optimize(model, optimizer=optimizer, dtype=torch.float32)
+model = model.to(device)
+```
 
 Optimization Experiment:
 
