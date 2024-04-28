@@ -127,12 +127,14 @@ void checkBSM() {
       digitalWrite(redLeftPin, LOW);        
       data = Serial.readString();
     }
+    digitalWrite(redLeftPin, HIGH);
 
     while (data == "BSM_RIGHT_SIG") {
       Serial.print("RIGHT ON\n");
       digitalWrite(redRightPin, LOW);        
       data = Serial.readString();
     }
+    digitalWrite(redRightPin, HIGH);
   }
 }
 
