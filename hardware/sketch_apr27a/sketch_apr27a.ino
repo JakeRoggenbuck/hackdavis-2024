@@ -59,11 +59,9 @@ void checkSensor() {
   while (distance < 4.5) {
     pingSensor();
     distance = updateDistance();
-    digitalWrite(speakerPin, HIGH);
     digitalWrite(redLeftPin, LOW);
     digitalWrite(redRightPin, LOW);
     delay(250);
-    digitalWrite(speakerPin, LOW);
     digitalWrite(redLeftPin, HIGH);
     digitalWrite(redRightPin, HIGH);
     delay(250);
@@ -108,7 +106,11 @@ void checkLane() {
       data = Serial.read();
     }
   }
+  while(Serial.available() > 0) {
+    char t = Serial.read();
+  }
 }
+
 
 void checkFace() {
   Serial.print("CHECKING FACE\n");
@@ -122,7 +124,11 @@ void checkFace() {
       data = Serial.read();
     }
   }
+  while(Serial.available() > 0) {
+    char t = Serial.read();
+  }
 }
+
 
 void checkBSM() {
   Serial.print("CHECKING BLIND SPOT MONITOR\n");
@@ -134,7 +140,11 @@ void checkBSM() {
     }
     digitalWrite(redLeftPin, HIGH);
   }
+  while(Serial.available() > 0) {
+    char t = Serial.read();
+  }
 }
+
 
 void off() {
   digitalWrite(redLeftPin, HIGH);
