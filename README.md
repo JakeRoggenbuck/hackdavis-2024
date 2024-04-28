@@ -48,6 +48,10 @@ We submitted a custom bfloat16 model to the intel leaderboard. [Here](https://hu
 
 ![2024-04-28_09-50](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/a5d263d5-cd12-490c-ac5f-725db129ec5c)
 
+## Use of LLMs and implications of hallucinations
+
+We used LLMs to generate and extend data that we used to fine tune our text directions Gemma model. Hallucinations for directions in this case could cause people to go to places that do not exist. This could be fixed by using existing databases of locations (Like a mapping API) to insure that the LLM is always directing someone to a real place.
+
 ### Proximity Alert
 Use an Arduino and an ultrasonic distance sensor to alert the driver if they are too close to anything, including another car 
 
