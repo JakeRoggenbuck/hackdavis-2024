@@ -1,12 +1,12 @@
 const int speakerPin = 6;
 
-const int redLeftPin = 5;
-const int blueLeftPin = 4;
-const int greenLeftPin = 3;
+const int redLeftPin = 11;
+const int blueLeftPin = 10;
+const int greenLeftPin = 9;
 
-const int redRightPin = 11;
-const int blueRightPin = 10;
-const int greenRightPin = 9;
+const int redRightPin = 5;
+const int blueRightPin = 4;
+const int greenRightPin = 3;
 
 const int trigPin = 13;
 const int echoPin = 12;
@@ -68,12 +68,12 @@ void checkSensor() {
     digitalWrite(redRightPin, HIGH);
     delay(250);
   }
-  
+
   digitalWrite(speakerPin, LOW);
 }
 
 void blink_beep(int redPin, int greenPin, int bluePin) {
-  digitalWrite(redPin, LOW);        
+  digitalWrite(redPin, LOW);
   digitalWrite(greenPin, LOW);
   digitalWrite(bluePin, LOW);
   digitalWrite(speakerPin, HIGH);
@@ -85,21 +85,27 @@ void blink_beep(int redPin, int greenPin, int bluePin) {
   delay(200);
 }
 
+// S = LANE_LEFT_SIG
+// P = LANE_RIGHT_SIG
+// A = FACE_SIG
+// I = BSM_LEFT_SIG
+// N = BSM_RIGHT_SIG
+
 void checkLane() {
   Serial.print("CHECKING LANE ASSIST\n");
-  
+
   if (Serial.available() > 0) {
-    String data = Serial.readString();
-    while (data == "LANE_LEFT_SIG") {
-      Serial.print("FLICKERING\n");
+    char data = Serial.read();
+    blink_beep(redLeftPin, greenLeftPin, blueLeftPin);
+    while (data == 'P') {
       blink_beep(redLeftPin, greenLeftPin, blueLeftPin);
-      data = Serial.readString();
+      data = Serial.read();
     }
 
-    while (data == "LANE_RIGHT_SIG") {
+    while (data == 'A') {
       Serial.print("FLICKERING\n");
       blink_beep(redRightPin, greenRightPin, blueRightPin);
-      data = Serial.readString();
+      data = Serial.read();
     }
   }
 }
@@ -107,13 +113,13 @@ void checkLane() {
 void checkFace() {
   Serial.print("CHECKING FACE\n");
   if (Serial.available() > 0) {
-    String data = Serial.readString();
-    while (data == "FACE_SIG") {
+    char data = Serial.read();
+    while (data == "I") {
       digitalWrite(speakerPin, HIGH);
       delay(250);
       digitalWrite(speakerPin, LOW);
       delay(250);
-      data = Serial.readString();
+      data = Serial.read();
     }
   }
 }
@@ -121,21 +127,23 @@ void checkFace() {
 void checkBSM() {
   Serial.print("CHECKING BLIND SPOT MONITOR\n");
   if (Serial.available() > 0) {
-    String data = Serial.readString();
-    while (data == "BSM_LEFT_SIG") {
-      Serial.print("LEFT ON\n");
-      digitalWrite(redLeftPin, LOW);        
-      data = Serial.readString();
+    char data = Serial.read();
+    while (data == "N") {
+      digitalWrite(redLeftPin, LOW);
+      data = Serial.read();
     }
     digitalWrite(redLeftPin, HIGH);
-
-    while (data == "BSM_RIGHT_SIG") {
-      Serial.print("RIGHT ON\n");
-      digitalWrite(redRightPin, LOW);        
-      data = Serial.readString();
-    }
-    digitalWrite(redRightPin, HIGH);
   }
+}
+
+void off() {
+  digitalWrite(redLeftPin, HIGH);
+  digitalWrite(redRightPin, HIGH);
+  digitalWrite(greenLeftPin, HIGH);
+  digitalWrite(greenRightPin, HIGH);
+  digitalWrite(blueLeftPin, HIGH);
+  digitalWrite(blueRightPin, HIGH);
+  digitalWrite(speakerPin, LOW);
 }
 
 void loop() {
@@ -143,4 +151,5 @@ void loop() {
   checkLane();
   checkFace();
   checkBSM();
+  off();
 }
