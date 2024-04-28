@@ -2,6 +2,8 @@
 
 Mission: Reduce car related injuries and deaths
 
+Our project for [https://hackdavis.io/event](https://hackdavis.io/event) 2024.
+
 ## Parts of the whole system
 
 ### Lane Detection
