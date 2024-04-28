@@ -15,6 +15,31 @@ Use a driver facing camera and OpenCV to detect if the driver is awake and payin
 ### Blind Spot Detection
 Use PyTorch and Intel Developer Cloud Notebook to detect pedestrians walking infront and next to the car and alert the driver if they get too close. We were able to use **Intel's ipex, PyTorch plugin, and bfloat16 to reduce the training time by 4 entire minutes.**
 
+Optimization Experiment:
+
+```
+Start time: 2024-04-27 16:27:36.983459
+End time: 2024-04-27 16:47:38.238154
+
+datetime.timedelta(seconds=1201, microseconds=254695)
+```
+
+```
+Start time: 2024-04-27 17:46:16.191538
+End time: 2024-04-27 18:02:06.233684
+
+datetime.timedelta(seconds=950, microseconds=42146)
+```
+
+```
+Start time: 2024-04-27 17:02:22.302090
+End time: 2024-04-27 17:18:17.402227
+
+datetime.timedelta(seconds=955, microseconds=100137)
+```
+
+As you can see, intel ipex and bfloat16 saved us 4 entire minutes for this model. Imagine a much larger model and the type of time and compute cost savings that could be achived.
+
 ### Proximity Alert
 Use an Arduino and an ultrasonic distance sensor to alert the driver if they are too close to anything, including another car 
 
