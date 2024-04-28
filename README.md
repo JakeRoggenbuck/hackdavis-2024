@@ -133,3 +133,9 @@ Use an Arduino and an ultrasonic distance sensor to alert the driver if they are
 ### The driver is looking at the road
 ![IMG_0174](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/ed782c16-c5d3-40ae-8754-36687b489a17)
 
+## Our Team
+![IMG_0354](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/e2886bc6-d88b-48b7-94e2-0a1a1440eb3d)
+
+![IMG_0362](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/75113c67-df4b-4ca6-8342-6b0bed205387)
+
+
