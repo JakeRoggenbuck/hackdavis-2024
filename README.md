@@ -26,6 +26,9 @@ Use an Arduino and an ultrasonic distance sensor to alert the driver if they are
 
 ![image](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/8d26845a-87a4-490c-8c3b-339f4e3b70de)
 
+## OpenCV Person Detection
+
+![IMG_0192](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/a249b115-1d7c-48b7-8c2f-f87c04769fcb)
 
 ## OpenCV Lane Detection
 
@@ -44,4 +47,11 @@ Use an Arduino and an ultrasonic distance sensor to alert the driver if they are
 ### Final by averaging out differences
 ![lane-image5](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/cd855467-ebd7-48e9-b189-9b789f33adca)
 
->>>>>>> fb280f423220599848bae7ece017498b1c374c08
+## Driver Alertness Detection
+
+### The driver is not looking at the road
+![IMG_0173](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/6c6a9ec3-7acf-4f2d-b395-8ed7be9c4fff)
+
+### The driver is looking at the road
+![IMG_0174](https://github.com/JakeRoggenbuck/hackdavis-2024/assets/35516367/ed782c16-c5d3-40ae-8754-36687b489a17)
+
