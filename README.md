@@ -11,7 +11,7 @@ Use a forward facing camera and OpenCV to recognize lanes and alert the driver i
 Use a driver facing camera and OpenCV to detect if the driver is awake and paying attention to the road
 
 ### Blind Spot Detection
-Use PyTorch and Intel Developer Cloud Notebook to detect pedestrians walking infront and next to the car and alert the driver if they get too close
+Use PyTorch and Intel Developer Cloud Notebook to detect pedestrians walking infront and next to the car and alert the driver if they get too close. We were able to use **Intel's ipex, PyTorch plugin, and bfloat16 to reduce the training time by 4 entire minutes.**
 
 ### Proximity Alert
 Use an Arduino and an ultrasonic distance sensor to alert the driver if they are too close to anything, including another car 
